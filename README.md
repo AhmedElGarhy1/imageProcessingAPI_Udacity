@@ -6,7 +6,7 @@
 
 `npm i`
 
-- start a server
+- start the server
 
 `npm run start`
 
@@ -14,28 +14,69 @@
 
 `npm run test`
 
+- build
+
+`npm run build`
+
 - formate
 
 `npm run prettier`
+
+## accessed endpoints
+
+```
+GET - /
+GET - /api/image?image={imageName}&width=${width}&height={height}
+
+```
+
+## functionality that made and tested
+
+src/utils
+
+it contains some functions like
+checkIfImageNameExist at src/utils/index.ts
+
+```Javascript
+/*
+  here it needs the imageName to search for it in dirName and return ? true if found : false if not
+*/
+checkIfImageNameExist(dirName, imageName)
+```
+
+and
+
+resizeImage at src/utils/resize.ts
+
+```Javascript
+/*
+  here it needs the imageName, width and height then it resize it with sharp library then return
+  {
+    ok: bool,
+    msg: string // message
+  }
+*/
+resizeImage(imageName, width, height)
+```
 
 ## how to use
 
 the goal is to be able to resize any image using sharp lib
 
-you will a **assets** folder that contains **full** and **sharped** folders
+you will a have **assets** folder that contains **full** and **sharped** subfolders
 
-the **full** folder contains some images that needs to resized so we need to run the server by going to
+the **full** folder contains some images that can be resized so we need to run the server and going to
 
 ```
 /api/image?image={imageName}&width=${width}&height={height}
 
 ```
 
-imageName should be exist at assets/full folder
+imageName it should be exist at assets/full folder
 
-width should be number
+width should be a number
 
-height should be number
+height should be a number
 
 then you will see the image in the endpoint you visited and you will find the file exist in assets/shaped/{imageName}
 
