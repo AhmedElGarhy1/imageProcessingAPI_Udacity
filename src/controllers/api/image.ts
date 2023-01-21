@@ -3,7 +3,7 @@ import { checkIfImageNameExist } from '../../utils/index.js';
 import { resizeImage } from '../../utils/resize.js';
 
 interface ImageResponse {
-  name: string;
+  filename: string;
   width: string;
   height: string;
 }
@@ -13,21 +13,21 @@ const getImage = async (
   res: express.Response
 ): Promise<void> => {
   const query = req.query;
-  const { name, width, height } = query as unknown as ImageResponse;
-  const imageName = name;
+  const { filename, width, height } = query as unknown as ImageResponse;
+  const imageName = filename;
   const imageWidth = parseInt(width);
   const imageHeight = parseInt(height);
 
   try {
     // check if all queries are exist
-    if (!imageName) throw Error('Please put a name query');
-    if (!imageWidth) throw Error('Please put a width query');
-    if (!imageHeight) throw Error('Please put a height query');
+    if (!imageName) throw Error('Please put the filename query');
+    if (!imageWidth) throw Error('Please put the width query');
+    if (!imageHeight) throw Error('Please put the height query');
 
     // check if image exist in the full folder
     const isImageExist = await checkIfImageNameExist('full', imageName);
     if (!isImageExist)
-      throw Error("image name doesn't exist, Please provide a valid name");
+      throw Error("filename doesn't exist, Please provide a valid filename");
 
     // check if image sharped before
     const isImageSharpedBefore = await checkIfImageNameExist(

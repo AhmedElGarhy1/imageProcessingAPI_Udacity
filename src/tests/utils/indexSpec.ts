@@ -9,7 +9,7 @@ describe('utilites functions', () => {
 
   describe('see if checkIfImageNameExist utilites function works', () => {
     it('when image exist return true', async () => {
-      const file = 'palmtunnel.jpg';
+      const file = 'icelandwaterfall.jpg';
       const dir = await fs.readdir(fullDir);
       expect(dir).toContain(file);
     });
@@ -23,18 +23,18 @@ describe('utilites functions', () => {
   describe('see if resizeImage utilites function works ', () => {
     afterEach(async () => {
       try {
-        fs.rm(`${sharpedDir}/encenadaport-999x888.jpg`);
+        await fs.rm(`${sharpedDir}/encenadaport-999x888.jpg`);
       } catch (err) {}
     });
-    it('when image name is correct it returns ok: true', async () => {
+    it('when filename is correct it returns ok: true', async () => {
       const res = await resizeImage('encenadaport', 999, 888);
       expect(res.ok).toBeTrue();
     });
-    it('when image name isnt correct it returns ok: false and msg: image name is not exist', async () => {
+    it('when image filename isnt correct it returns ok: false and msg: image filename is not exist', async () => {
       const res = await resizeImage('test', 999, 888);
       expect(res).toEqual({
         ok: false,
-        msg: 'image name is not exist',
+        msg: 'image filename is not exist',
       });
     });
   });

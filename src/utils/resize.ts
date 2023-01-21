@@ -17,7 +17,7 @@ const resizeImage = async (
   if (!isImageExist)
     return {
       ok: false,
-      msg: 'image name is not exist',
+      msg: 'image filename is not exist',
     };
 
   //

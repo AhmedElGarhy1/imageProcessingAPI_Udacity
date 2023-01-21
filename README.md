@@ -26,7 +26,7 @@
 
 ```
 GET - /
-GET - /api/image?image={imageName}&width=${width}&height={height}
+GET - /api/image?filename={imageName}&width=${width}&height={height}
 
 ```
 
@@ -68,7 +68,7 @@ you will a have **assets** folder that contains **full** and **sharped** subfold
 the **full** folder contains some images that can be resized so we need to run the server and going to
 
 ```
-/api/image?image={imageName}&width=${width}&height={height}
+/api/image?filename={imageName}&width=${width}&height={height}
 
 ```
 
