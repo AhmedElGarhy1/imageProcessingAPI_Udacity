@@ -10,7 +10,7 @@ const app = express();
 app.use(routes);
 
 // listening with port
-const PORT = 8000;
+const PORT = 4000;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));
 
 // for testing
